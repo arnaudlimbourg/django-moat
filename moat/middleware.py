@@ -17,8 +17,7 @@ import logging
 import re
 
 from django.conf import settings
-from django.http import HttpResponse
-from django.utils.encoding import iri_to_uri
+from django.http import HttpResponseRedirectBase
 from django.contrib.auth import authenticate
 from django.core.urlresolvers import resolve
 
@@ -26,12 +25,8 @@ from django.core.urlresolvers import resolve
 LOG = logging.getLogger(__name__)
 
 
-class HttpResponseTemporaryRedirect(HttpResponse):
+class HttpResponseTemporaryRedirect(HttpResponseRedirectBase):
     status_code = 307
-
-    def __init__(self, redirect_to):
-        super(HttpResponse, self).__init__()
-        self['Location'] = iri_to_uri(redirect_to)
 
 
 class MoatMiddleware(object):
