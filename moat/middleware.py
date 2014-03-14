@@ -105,7 +105,7 @@ class MoatMiddleware(object):
         return self._http_auth_helper(request)
 
     def _redirect(self, request):
-        newurl = "https://%s%s" % (request.get_host(request), request.get_full_path())
+        newurl = "https://%s%s" % (request.get_host(), request.get_full_path())
         if settings.DEBUG and request.method == 'POST':
             raise RuntimeError(
                 "Django can't perform a SSL redirect while maintaining POST "
