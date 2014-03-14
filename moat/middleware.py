@@ -17,7 +17,7 @@ import logging
 import re
 
 from django.conf import settings
-from django.http.response import HttpResponseRedirectBase
+from django.http.response import HttpResponse, HttpResponseRedirectBase
 from django.contrib.auth import authenticate
 from django.core.urlresolvers import resolve
 
